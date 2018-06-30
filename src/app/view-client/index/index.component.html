@@ -1,0 +1,158 @@
+<br>
+<br>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+    <select name="" id="" class="form-control" style="text-transform: uppercase;"#t (change)="capturar(t.value)" >
+      <option [value]="0" >todas</option>
+      <option  *ngFor="let categoria of dataCategoria.categoria" [value]="categoria.idcategoria">{{categoria.cat_nombre}}</option>
+    </select>
+    </div>
+  </div>
+</div>
+<div class="new_arrivals_agile_w3ls_info">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 product-men" *ngFor="let view of dataArray.proventa">
+          <div class="men-pro-item simpleCart_shelfItem" >
+            <div class="men-thumb-item">
+              <img src="./assets/images/m1.jpg" alt="" class="pro-image-front">
+              <img src="./assets/images/m1.jpg" alt="" class="pro-image-back">
+                <div class="men-cart-pro">
+                  <div class="inner-men-cart-pro">
+                    <a [routerLink]="['/view-more',view.idpro_venta]" class="link-product-add-cart">Ver Mas</a>
+                  </div>
+                </div>
+            </div>
+            <div class="item-info-product ">
+              <h4><a [routerLink]="['/view-more',view.idpro_venta]" >{{view.nombre_pro_venta}}</a></h4>
+              <div class="info-product-price">
+                <span> Q. {{view.precio_pro_venta}}</span>
+              </div>
+              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                  <input type="button" value="Agregar Al Carrito" class="button" (click)="lgcomprar.show()" />
+              </div>
+            </div>
+          </div>
+        <br><br>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!--Modal para comprar-->
+<div bsModal #lgcomprar="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Comprar</h4>
+        <button type="button" class="close pull-right" (click)="lgAgregar.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="container">
+        <div class="row">
+
+                  <div class="col-md-8">
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1" >Nombre </span>
+                      <input type="text" class="form-control"  aria-describedby="basic-addon1" disabled value='nombre'>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1" >precio</span>
+                      <input type="text" class="form-control" value='precio' aria-describedby="basic-addon1" disabled>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <img src="./assets/images/m1.jpg" alt="" class="pro-image-front" width="200" height="150">
+                  </div>
+        </div>
+        Caracteristicas del pastel
+        <hr>
+        <div class="input-group">
+          <span class="input-group-addon" >Sabor del Pastel</span>
+            <select class="" name=""  #saborPastel (change)="function_verificar_seleccionar_sabor_pastel(saborPastel.value)" >
+              <option [value]="0">Seleccione</option>
+              <option [value]="1">sabor 1</option>
+              <option [value]="2">sabor 2</option>
+              <option [value]="3">sabor 1</option>
+              <option [value]="4">sabor 2</option>
+            </select>
+        </div>
+        <div *ngIf="bool_saborPastel == true">
+          debe de seleccionar un sabor de pastel
+        </div>
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1" >Color del Pastel</span>
+          <select class="" name="">
+            <option [value]="0">Seleccione</option>
+            <option [value]="1">Color 1 </option>
+            <option [value]="2">Color 2</option>
+            <option [value]="3">color 3</option>
+          </select>
+      </div>
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1" >Tipo Pastel</span>
+          <select class="" name="">
+            <option [value]="0">Seleccione</option>
+            <option [value]="1">Frio</option>
+            <option [value]="2">Al Tiempo</option>
+          </select>
+      </div>
+    <br>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1" >Cantidad de Piezas por Pastel</span>
+        <select class="" name="">
+          <option [value]="0">Seleccionar</option>
+          <option [value]="1">8 piezas</option>
+          <option [value]="2">12 piezas</option>
+          <option [value]="2">24 piezas</option>
+        </select>
+      </div>
+<br>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon1" >Cantida de pasteles</span>
+    <input type="number" value="1" min="1">
+</div>
+<div>
+  <br>
+  personalizar pastel
+  <input type="checkbox" name="" id="">
+  <input type="checkbox" name="" value="">
+</div>
+si es cierto aparece
+<div>
+  <br>
+  Agregar Fotografia
+  <input type="file" name="" value="">
+</div>
+<br>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon1" >fecha de entrega</span>
+    <input type="date">
+</div>
+      </div>
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">TOTAL: </span>
+        <input type="text" class="form-control" value={{total}} aria-describedby="basic-addon1" disabled style="color:red;">
+      </div>
+
+      </div>
+      <div class="modal-footer">
+          <input  (click)="add_pedido()" class="btn btn-primary" type="button" name="" value="agregar">
+          <button (click)="lgcomprar.hide()" class="btn btn-danger">cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

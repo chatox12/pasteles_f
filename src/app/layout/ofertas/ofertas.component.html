@@ -1,0 +1,257 @@
+<br>
+<br>
+
+<br>
+<div class="contenido">
+  <button class="btn btn-primary" (click)="Modal_oferta.show()"><i class="fa fa-plus"></i> agregar</button>
+  <br>
+  <br>
+</div>
+<!--si existe contenido dentro de  variable oferta-->
+<div class="contenido" *ngIf='load_oferta != null'>
+
+  <table id="example" class="display" width="100%">
+    <thead>
+      <tr align="center">
+        <th>ID</th>
+        <th>nombre_descuento</th>
+        <th>fecha de inicio</th>
+        <th>fecha finaliza</th>
+        <th>descuento</th>
+        <th>cantidad</th>
+        <th>estado</th>
+        <th>Editar</th>
+        <th>Desactivar</th>
+      </tr>
+    </thead>
+
+    <tbody>
+       <tr *ngFor='let ofertas of load_oferta.oferta '>
+        <td>ID</td>
+        <td>nombre_descuento</td>
+        <td>{{ofertas.finicio_oferta}}</td>
+        <td>{{ofertas.fefin_oferta}}</td>
+        <td>{{ofertas.descuento_oferta}}</td>
+        <td>{{ofertas.cantidad_oferta}}</td>
+        <td>{{ofertas.estado_oferta}}</td>
+        <td width="3%" align="center"><button class="btn btn-primary" (click)='Modal_ofertaU.show();function_obtener_id(ofertas.idoferta)'> <i class="fa fa-edit"></i></button> </td>
+        <td width="3%" align="center"><button class="btn btn-danger" (click)='Modal_eliminar.show()'><i class="fa fa-trash"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="contenido" *ngIf='load_oferta == null'>
+  no hay dato ---
+</div>
+
+
+<!--Modal ofertas-->
+<div bsModal #Modal_oferta="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" #modal_add>
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">AGREGAR</h4>
+          <button type="button" class="close pull-right" (click)="Modal_oferta.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <div class="container">
+          
+          <div >
+              <div>
+                <label for="">Nombre</label>
+                <br>
+                <input type="text">
+              </div>
+
+              <div>
+                  <label for="">fecha de Inicio</label> 
+                      <!--validaciones para las fechas -->
+                        <label for="" style="color: green" *ngIf='fechas_bool == true'><i class="fa fa-check-circle"></i></label>
+                        <label for="" style="color: red" *ngIf='fechas_bool == false'><i class="fa fa-times-circle"></i></label>
+                      <!--validaciones para las fechas -->
+                    <br>
+                  <input type="date" id="fecha_inicio" name="fecha_inicio" #fecha_inicio format='YYYY/MM/DD' >
+              </div>
+  
+              <div>
+                <label for="">fecha Limite</label> 
+                    <!--validaciones para las fechas -->
+                      <label for="" style="color: green" *ngIf='fechas_bool == true'><i class="fa fa-check-circle"></i></label>
+                      <label for="" style="color: red" *ngIf='fechas_bool == false'><i class="fa fa-times-circle"></i></label>
+                    <!--validaciones para las fechas -->
+                  <br>
+                <input type="date"  id="fecha_limite" name="fecha_limite"  #fecha_entrega>
+              </div>
+  
+              <div>
+                <label for="">Descuento % porcentaje</label>
+                    <!--validaciones para el porcentaje -->
+                      <label for="" style="color: green" *ngIf='descuento_bool == true'><i class="fa fa-check-circle"></i></label>
+                      <label for="" style="color: red" *ngIf='descuento_bool == false'><i class="fa fa-times-circle"></i></label>
+                    <!--validaciones para el porcentaje -->
+                  <br>
+                <input type="number"  id="porcentaje" name="porcentaje" min="0.01" max="1.0" step="0.01" #descuento>
+              </div>
+  
+              <div>
+                <label for="">En la Compra de </label> 
+                    <!--validaciones para el porcentaje -->
+                      <label for="" style="color: green" *ngIf='cantidad_bool == true'><i class="fa fa-check-circle"></i></label>
+                      <label for="" style="color: red" *ngIf='cantidad_bool == false'><i class="fa fa-times-circle"></i></label>
+                    <!--validaciones para el porcentaje -->
+                  <br>
+                <input type="number" id="cantidad" name="cantidad" min="0" #cantidad>
+              </div>
+  
+              <div>
+                <label for="">Estado</label>
+                  <br>
+                <select name="seleccionar" id="seleccionar" #activon>
+                  <option value="1">Activo</option>
+                  <option value="0">No Activo</option>
+                </select>
+              </div>
+              
+                    <!--validaciones para el porcentaje -->
+                    <label for="" style="color: green" *ngIf='todo_correcto_bool == true'><i class="fa fa-check-circle"></i> Campos LLenados Correctamente</label>
+                    <label for="" style="color: red" *ngIf='todo_correcto_bool == false'><i class="fa fa-times-circle"></i>ERROR. Datos no correctos</label>
+                  <!--validaciones para el porcentaje -->
+
+              <br>
+              
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" (click)='function_date(fecha_inicio, fecha_entrega,descuento,cantidad, activon, Modal_oferta); function_validar_fechas(fecha_inicio, fecha_entrega);function_validar_descuento(descuento)' > AGREGAR </button>   
+            <button (click)="Modal_oferta.hide()" class="btn btn-danger">cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!--Modal ofertas UPDATE-->
+<div bsModal #Modal_ofertaU="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">ACTUALIZAR</h4>
+          <button type="button" class="close pull-right" (click)="Modal_ofertaU.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+          
+                <div >
+                    <div>
+                      <label for="">Nombre</label>
+                      <br>
+                      <input type="text">
+                    </div>
+      
+                    <div>
+                        <label for="">fecha de Inicio</label> 
+                            <!--validaciones para las fechas -->
+                              <label for="" style="color: green" *ngIf='fechas_bool == true'><i class="fa fa-check-circle"></i></label>
+                              <label for="" style="color: red" *ngIf='fechas_bool == false'><i class="fa fa-times-circle"></i></label>
+                            <!--validaciones para las fechas -->
+                          <br>
+                        <input type="date" id="fecha_inicio" name="fecha_inicio" #fecha_inicio format='YYYY/MM/DD' >
+                    </div>
+        
+                    <div>
+                      <label for="">fecha Limite</label> 
+                          <!--validaciones para las fechas -->
+                            <label for="" style="color: green" *ngIf='fechas_bool == true'><i class="fa fa-check-circle"></i></label>
+                            <label for="" style="color: red" *ngIf='fechas_bool == false'><i class="fa fa-times-circle"></i></label>
+                          <!--validaciones para las fechas -->
+                        <br>
+                      <input type="date"  id="fecha_limite" name="fecha_limite"  #fecha_entrega>
+                    </div>
+        
+                    <div>
+                      <label for="">Descuento % porcentaje</label>
+                          <!--validaciones para el porcentaje -->
+                            <label for="" style="color: green" *ngIf='descuento_bool == true'><i class="fa fa-check-circle"></i></label>
+                            <label for="" style="color: red" *ngIf='descuento_bool == false'><i class="fa fa-times-circle"></i></label>
+                          <!--validaciones para el porcentaje -->
+                        <br>
+                      <input type="number"  id="porcentaje" name="porcentaje" min="0.01" max="1.0" step="0.01" #descuento>
+                    </div>
+        
+                    <div>
+                      <label for="">En la Compra de </label> 
+                          <!--validaciones para el porcentaje -->
+                            <label for="" style="color: green" *ngIf='cantidad_bool == true'><i class="fa fa-check-circle"></i></label>
+                            <label for="" style="color: red" *ngIf='cantidad_bool == false'><i class="fa fa-times-circle"></i></label>
+                          <!--validaciones para el0.02 porcentaje -->
+                        <br>
+                      <input type="number" id="cantidad" name="cantidad" min="0" #cantidad>
+                    </div>
+        
+                    <div>
+                      <label for="">Estado</label>
+                        <br>
+                      <select name="seleccionar" id="seleccionar" #activon>
+                        <option value="1">Activo</option>
+                        <option value="0">No Activo</option>
+                      </select>
+                    </div>
+                    
+                          <!--validaciones para el porcentaje -->
+                          <label for="" style="color: green" *ngIf='todo_correcto_bool == true'><i class="fa fa-check-circle"></i> Campos LLenados Correctamente</label>
+                          <label for="" style="color: red" *ngIf='todo_correcto_bool == false'><i class="fa fa-times-circle"></i>ERROR. Datos no correctos</label>
+                        <!--validaciones para el porcentaje -->
+      
+                    <br>
+                    
+                  </div>
+                </div>
+        </div>
+        <div class="modal-footer">   
+            <button class="btn btn-primary" (click)='function_update_ofertas(fecha_inicio, fecha_entrega,descuento,cantidad, activon, Modal_oferta); function_validar_fechas(fecha_inicio, fecha_entrega);function_validar_descuento(descuento)'> ACTUALIZAR </button>
+            <button (click)="Modal_ofertaU.hide()" class="btn btn-danger">cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--- modal para elimintar -->
+
+  <div bsModal #Modal_eliminar="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Desactivar Ofertas</h4>
+            <button type="button" class="close pull-right" (click)="Modal_eliminar.hide()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <div class="container">
+            
+            <div >
+                <div>
+                  <p style="text-transform:  Uppercase">desea desactivar la oferta</p>
+                  <input type="text" value="nombre de la oferta" disabled style="text-transform:  Uppercase">
+                </div>
+    
+  
+                <br>
+  
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">   
+              <button class="btn btn-primary" type="submit"> AGREGAR </button>
+              <button (click)="Modal_eliminar.hide()" class="btn btn-danger">cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>

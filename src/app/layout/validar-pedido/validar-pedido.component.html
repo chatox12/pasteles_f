@@ -1,0 +1,74 @@
+<br>
+<br>
+
+<br>
+<div class="contenido">
+  <br>
+  <br>
+  <table id="example" class="display" width="100%">
+    <thead>
+      <tr align="center">
+        <th>ID</th>
+        <th>estado</th>
+        <th>mas detalles</th>
+        <th>Aceptar</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let pedidos of load_vpedido.pedidos ; let i = index">
+        <td>{{i}}</td>
+        <td *ngIf="pedidos.estado == 0">No Aceptado</td>
+        <td width="3%" align="center"><button class="btn btn-info" (click)="Modal_validar_pedido.show();function_obtener_id(i)"><i class="fa fa-eye"></i></button></td>
+        <td width="3%" align="center"><button class="btn btn-primary" (click)="function_accepted_pedido()"> <i class="fa fa-edit"></i></button> </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!--Modal ofertas-->
+<div bsModal #Modal_validar_pedido="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" #modal_add>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">AGREGAR</h4>
+        <button type="button" class="close pull-right" (click)="Modal_validar_pedido.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container"> 
+        
+          <div class="cliente">
+              
+              datos generales del cliente <br>
+              <label for=""> <b>nombre: </b>  </label>{{load_data_view.nombre_cli}} <br>
+              <label for=""> <b>Apellido: </b>  </label>{{load_data_view.apellido_cli}} <br>
+              <label for=""> <b>Telefono: </b>  </label>{{load_data_view.telefono_cli}} <br>
+              <label > <b> correo: </b> </label>{{load_data_view.correo_cli}} <br>
+    
+          </div>
+          <div class="pedido">
+            <hr>
+            <label for=""> <b>fecha de entrega: </b>  </label>: {{load_data_view.fecha_entrega_pedido}} <br>
+            <label for=""> <b>cantidad de pasteles:</b> </label>: {{load_data_view.cantidad_pasteles_pedido}} <br> 
+            <label for=""> <b>rebanadas por pastel:</b> </label>: {{load_data_view.rebanadas_pasteles_pedido}} <br>
+          </div>
+          <div class="detalle_pro_venta">
+            <hr>
+            <label for=""> <b>imagen: </b></label>
+            <label for=""> <b>Nombre Pastel: </b></label> {{load_data_view.nombre_pro_venta}}
+          </div>
+
+        </div>
+
+        
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-primary" (click)="function_accepted_pedido" >Aceptar Pedido </button>   
+          <button (click)="Modal_validar_pedido.hide()" class="btn btn-danger">cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

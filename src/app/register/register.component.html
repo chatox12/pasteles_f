@@ -1,0 +1,115 @@
+<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<a [routerLink]="['']"><b><h5><i class="fa fa-home"></i>salir</h5></b></a>
+				<br>
+
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="./assets/images/logo-queens.jpg" alt="IMG">
+				</div>
+
+				<div class="login100-form validate-form">
+					<span class="login100-form-register txt2">
+						Registro Clientes Pasteles Queen's
+					</span>
+
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" name="nombre" placeholder="Nombres" #name>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="nombre" placeholder="Apellidos" #lastname>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="correo" placeholder="Correo" #correo (keyup)='function_validar_correo(correo.value)'>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-at" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="alert alert-danger" *ngIf='error_correo == false' >
+						ERROR! debe de ingresar un correo valido...
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="nombre" placeholder="direccion" #direccion>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="nombre" placeholder="telefono" #telefono>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-phone-square" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="nombre" placeholder="nit" #nit>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="nombre" placeholder="Ingrese usuario" #user (keyup)='function_verificar_user(user.value)'>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+
+					</div>
+					<div class="alert alert-danger" *ngIf='error_user == true' >
+						ERROR! el usuario ya esta en uso...
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="password" name="pass" placeholder="Contrasena" #pass1>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="password" name="pass" placeholder="Repetir Contrasena" #pass2>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="alert alert-danger" *ngIf='error_password == false' >
+						ERROR! las contrasenas no coinciden...
+					</div>
+					<div class="container-register100-form-btn">
+
+						<button class="register100-form-btn" (click)='function_insert_datos(name.value, lastname.value,correo.value,direccion.value,telefono.value,nit.value,user.value,pass1.value,pass2.value)'>
+							Registrar
+						</button>
+					</div>
+
+					<!-- para decir que existen errores-->
+					<br>
+					<div class="alert alert-danger" role="alert"  *ngIf="error == true">
+						debe de ingresar los datos requeridos!
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

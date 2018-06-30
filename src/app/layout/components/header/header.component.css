@@ -1,0 +1,92 @@
+.header {
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+    height: 44px;
+    background-color: #35475e;
+    border-bottom: 3px solid #2d3d51;
+}
+.header .logo{
+  background-color: #2d3d51;
+  height: 44px;
+  width: 200px;
+  text-align: center;
+  color: white;
+  padding-top: 2px;
+  font-size: 20px;
+}
+
+.logo span {
+    display: inline-block;
+}
+
+.header .users{
+  width: 200px;
+  margin-left: 85%;
+  margin-right: 15%;
+  margin-top: -44px;
+}
+
+ul{
+  list-style: none;
+  padding: 0px;
+}
+
+.nav li a{
+  color:#fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: inline-block;
+}
+.nav li a:hover{
+  background-color: #434343;
+}
+.nav > li{
+  float: left;
+}
+
+.nav li ul{
+  display: none;
+  position:absolute;
+  text-align: left;
+
+}
+
+.nav li:hover > ul{
+  display:block;
+  background-color: black;
+}
+
+
+/* set element styles to fit tablet and higher(desktop) */
+@media screen and (min-width: 200px) {
+  .nav li a span{
+    display: none;
+
+  }
+
+}
+
+/* set element styles to fit tablet and higher(desktop) */
+@media screen and (min-width: 400px) {
+  .nav li a span{
+    display: none;
+  }
+}
+/* set element styles to fit tablet and higher(desktop) */
+@media screen and (min-width: 600px) {
+  .header .user{
+    margin-left: 80%;
+  }
+
+  .nav li a span{
+    display: inline-block;
+
+  }
+}
+/* set element styles for desktop */
+@media screen and (min-width: 800px) {
+  .nav li a span{
+    display: inline-block;
+  }
+}

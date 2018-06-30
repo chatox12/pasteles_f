@@ -1,0 +1,93 @@
+<br>
+<br>
+
+<br>
+<div class="contenido">
+  <br>
+  <table id="example" class="display" width="100%">
+    <thead>
+      <tr align="center">
+        <th>Nombre</th>
+        <th>Nit</th>
+        <th>Direccion</th>
+        <th>Ciudad</th>
+        <th>telefono</th>
+        <th>Logo</th>
+        <th>Editar</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let emp of load_emp.empresa">
+        <td>{{emp.nombre_emp}}</td>
+        <td>{{emp.nit_emp}}</td>
+        <td>{{emp.direccion_emp}}</td>
+        <td>{{emp.ciudad_emp}}</td>
+        <td>{{emp.telefono_emp}}</td>
+        <td>{{emp.logo_emp}}</td>
+        <td width="3%" align="center"><button class="btn btn-primary" (click)="lgcomprar.show();function_add_element(emp.idempresa, emp.nombre_emp,emp.nit_emp,emp.direccion_emp,emp.ciudad_emp, emp.telefono_emp)"> <i class="fa fa-edit"></i></button> </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--Modal para comprar-->
+<div bsModal #lgcomprar="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Actualizar</h4>
+          <button type="button" class="close pull-right" (click)="lgcomprar.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <div class="container">
+          
+          <form #update_empresa='ngForm' (ngSubmit)='function_update(update_empresa) '>
+              <div>
+                  <label for="">nombre</label>
+                    <br>
+                  <input type="text" value={{nombre}}  id="nombre" name="nombre"  ngModel required>
+              </div>
+  
+              <div>
+                <label for="">NIT</label>
+                  <br>
+                <input type="text" value={{nit}} id="nit" name="nit" ngModel required>
+              </div>
+  
+              <div>
+                <label for="">Direccion</label>
+                  <br>
+                <input type="text" value={{direccion}} id="direccion" name="direccion" ngModel required>
+              </div>
+  
+              <div>
+                <label for="">ciudad</label>
+                  <br>
+                <input type="text" value={{ciudad}} id="ciudad" name="ciudad" ngModel required>
+              </div>
+  
+              <div>
+                <label for="">Telefono</label>
+                  <br>
+                <input type="text" value={{telefono}} id="telefono" name="telefono" ngModel required>
+              </div>
+              <div>
+                <label for="">Logo</label>
+                <br>
+                <input type="file" name="logo" id="logo" ngModel required>
+              </div>
+              <br>
+              <button class="btn btn-success" type="submit"> actualizar </button>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">   
+            <button (click)="lgcomprar.hide()" class="btn btn-danger">cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

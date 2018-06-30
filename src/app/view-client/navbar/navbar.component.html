@@ -1,0 +1,24 @@
+<div class="login">
+   <a [routerLink]="['/login']"><i class="fa fa-unlock-alt"></i> Ingresar|</a>
+</div>
+
+
+<div class="logo_agile">
+  <h1><a href="#"><span>P</span>asteles <img src="./assets/images/logo_queens.jpg" alt="" width="70px" height="70px">    <span>Q</span>uee's </a> </h1>
+</div>
+<div class="navbar">
+  <ul class="menu">
+    <li [routerLinkActive]="['active']" ><a [routerLink]="['/index']">inicio</a></li>
+    <li [routerLinkActive]="['active']" ><a [routerLink]="['/pasteles']">Pasteles</a> </li>
+    <li [routerLinkActive]="['active']" ><a [routerLink]="['/panaderia']">Panaderia</a> </li>
+    <li [routerLinkActive]="['active']" ><a [routerLink]="['/postres']">Postres</a> </li>
+    <li [routerLinkActive]="['active']" ><a [routerLink]="['/acercade']">sobre Nosotros</a></li>
+  </ul>
+<!--
+para el login del usuario
+-->
+
+  <ul *ngIf="local_id != null">
+    <li align='right'><a href="">usuario</a></li>
+  </ul>
+</div>

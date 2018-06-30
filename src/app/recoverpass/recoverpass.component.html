@@ -1,0 +1,40 @@
+<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+
+				<div class="login100-form validate-form">
+					<span class="login100-form-register txt2">
+						Clientes Pasteles Queen's
+					</span>
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="password" name="pass" placeholder="Contrasena" #pass1>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="password" name="pass" placeholder="Repetir Contrasena" #pass2>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="container-register100-form-btn">
+
+						<button class="register100-form-btn">
+							Cambiar Contraseña
+						</button>
+					</div>
+
+					<!-- para decir que existen errores-->
+					<br>
+					<div class="alert alert-danger" role="alert"  *ngIf="error == true">
+						debe de ingresar los datos requeridos!
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

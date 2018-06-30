@@ -1,0 +1,141 @@
+.view-img{
+  border: solid #ddd 1px;
+  height: 300px;
+  padding: 3px;
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+.view-img img{
+  display: block;
+  margin: auto;
+}
+
+.view-img a:hover{
+  background-color: red;
+}
+
+.img-minis{
+  height: 10px;
+
+}
+.img-min{
+  float: left;
+  width: 110px
+}
+.img-min img{
+  border: 1px solid #ddd;
+  width: 90px;
+}
+
+.img-min:hover{
+  background-color: red;
+}
+
+
+
+
+.nombre-pastel{
+  font-size: 30px;
+  font-weight: bold;
+  font-family:inherit;
+  color: #2fdab8;
+}
+
+.price-item{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.ocacion{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.button2{
+  width: 70%;
+}
+
+.button {
+    font-size: 13px;
+    color: #fff;
+    background: #2fdab8;
+    text-decoration: none;
+    position: relative;
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    text-transform: uppercase;
+    padding: .5em 0;
+    outline: none;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+
+.button:hover{
+background: #2fdab8;
+  /*
+  background: #2fdab8;
+   */
+
+}
+
+.hvr-outline-out {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  background: #2fdab8;
+}
+/*para el contorno del boton ver mas*/
+.hvr-outline-out:before {
+  content: '';
+  position: absolute;
+  /*
+  border: #2fdab8 solid 4px;
+   */
+  border: #2fdab8 solid 4px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: top, right, bottom, left;
+  transition-property: top, right, bottom, left;
+}
+
+/*efecto para el contorno del botton del carrito*/
+.hvr-outline-out:hover:before,.hvr-outline-out:focus:before,.hvr-outline-out:active:before {
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+}
+
+.label-descripcion{
+  margin: 0 0 1em 0;
+  background: red;
+  width: 30%;
+  height: 40px;
+  text-align: center;
+  color: white;
+  border-radius: 50px 50px 0px 0px;
+  font-size: 1.3em;
+}
+.descripcion{
+  margin-top: -20px;
+  border: solid 1px #ddd;
+  box-shadow: 0px 0px 2px 0px;
+}
+
+.nod-descripcion{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

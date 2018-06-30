@@ -1,0 +1,81 @@
+<br>
+<br>
+
+<br>
+<div class="contenido">
+  <br>
+  <table id="example" class="display" width="100%">
+    <thead>
+      <tr align="center">
+        <th>numero</th>
+        <th>No. pedido</th>
+        <th>fecha de Entrega</th>
+        <th>cliente nombre</th>
+        <th>pastel nombre</th>
+        <th width="3%" align="center">Detalles</th>
+        <th width="3%" align="center">Pedido Entregado</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let datos of load_vpedidos.pedidos; let i = index">
+        <td>{{i}}</td>
+        <td>pedido</td>
+        <td>{{datos.telefono_cli}}</td>
+        <td>{{datos.nombre_cli}}</td>
+        <td>{{datos.nombre_pro_venta}}</td>
+        <td width="3%" align="center"><button class="btn btn-info" (click)="function_view_more(i);Modal_view_more.show()"><i class="fa fa-eye"></i></button></td>
+        <td width="3%" align="center"><button class="btn btn-success" (click)="function_entrega_pastel()"><i class="fa fa-trash"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<!--modal from view more-->
+<div bsModal #Modal_view_more="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" #modal_add>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">VER MAS</h4>
+        <button type="button" class="close pull-right" (click)="Modal_validar_pedido.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container"> 
+        
+          <div class="cliente">
+              
+              datos generales del cliente <br>
+              <label for=""> <b>nombre: </b>  </label>{{load_view.nombre_cli}}<br>
+              <label for=""> <b>Apellido: </b>  </label>{{load_view.apellido_cli}} <br>
+              <label for=""> <b>Telefono: </b>  </label>{{load_view.telefono_cli}} <br>
+              <label > <b> correo: </b> </label>{{load_view.correo_cli}} <br>
+    
+          </div>
+          <div class="pedido">
+            <hr>
+            <label for=""> <b>fecha de entrega: </b>  </label>: {{load_view.fecha_entrega_pedido}} <br>
+            <label for=""> <b>cantidad de pasteles:</b> </label>: {{load_view.cantidad_pasteles_pedido}} <br> 
+            <label for=""> <b>rebanadas por pastel:</b> </label>: {{load_view.rebanadas_pasteles_pedido}} <br>
+          </div>
+          <div class="detalle_pro_venta">
+            <hr>
+            <label for=""> <b>imagen: </b></label>
+            <label for=""> <b>Nombre Pastel: </b></label> {{load_view.nombre_pro_venta}}
+          </div>
+
+
+        </div>
+
+        
+      </div>
+      <div class="modal-footer">   
+          <button (click)="Modal_view_more.hide()" class="btn btn-danger">cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
